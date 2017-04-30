@@ -21,8 +21,9 @@ repositories {
 	mavenCentral()
 }
 
-
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile ('org.json:json:20160212')
+	compile 'net.minidev:json-smart:2.2.1'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
