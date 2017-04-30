@@ -25,5 +25,6 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile ('org.json:json:20160212')
 	compile 'net.minidev:json-smart:2.2.1'
+	compile files('src/main/resources/static/lib/postgresql-42.0.0.jre6.jar')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

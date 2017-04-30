@@ -19,7 +19,6 @@ public class Resources {
     public ResponseEntity<JSONObject> fires(HttpServletRequest request){
         FireService service = new FireService();
         ArrayList<Cords> fires = service.extractFires();
-        System.out.println("Estoy aqui adentro");
         JSONObject obj= new JSONObject();
         obj.put("fuegos",fires);
         return new ResponseEntity<>(obj,HttpStatus.CREATED);
