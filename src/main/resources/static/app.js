@@ -1,8 +1,7 @@
-angular.module('fireApp', ['ui.router', 'base64'])
+angular.module('appFire', ['ui.router', 'base64'])
 
     .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
-
 
         //starter screen
             .state('home', {

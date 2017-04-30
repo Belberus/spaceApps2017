@@ -1,5 +1,7 @@
-angular.module('fireApp')
+angular.module('appFire')
 
-    .controller('homeCtrl', ['$scope', '$state', 'fireApp', function ($scope, $state, fireApp) {
+    .controller('homeCtrl', ['$scope', '$state', 'app', function ($scope, $state, app) {
+
+        window.alert("bb");
 
     }]);
