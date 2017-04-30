@@ -56,6 +56,14 @@ angular.module('appFire')
         };
         legend.addTo(mymap);
 
+        var getDistance = function(lat1,long1, lat2, long2) {
+            var aux1 = lat2 - lat1;
+            var aux2 = long2 - long1;
+            var aux3 = Math.sqrt(aux1*aux1 + aux2*aux2);
+            return aux3;
+        }
+
+        var water = L.circle([50, 50],{radius: 0}).addTo(mymap).bindPopup("I'm a deep water deposit.");
         app.getFires(function (data) {
             $scope.json = data.fuego_agua;
             for (var i = 0; i < Object.keys($scope.json).length; i++) {
@@ -66,9 +74,23 @@ angular.module('appFire')
                     radius: 400
                 }).addTo(mymap);
 
-                var water = L.circle([$scope.json[i].lata, $scope.json[i].longa],{radius: 800}).addTo(mymap).bindPopup("I'm a deep water deposit.");
-
                 circle.on('click', function(e) {
+                    var latfuego, longfuego, latagua, longagua;
+                    latfuego = $scope.json[0].latf;
+                    longfuego = $scope.json[0].longf;
+                    latagua = $scope.json[0].lata;
+                    longagua = $scope.json[0].longa;
+                    for (var i = 1; i < Object.keys($scope.json).length; i++) {
+                        if(getDistance(e.latlng.lat,e.latlng.lng,$scope.json[i].latf,$scope.json[i].longf)<getDistance(e.latlng.lat,e.latlng.lng,latfuego,longfuego)){
+                            latfuego = $scope.json[i].latf;
+                            longfuego = $scope.json[i].longf;
+                            latagua = $scope.json[i].lata;
+                            longagua = $scope.json[i].longa;
+                        }
+                    }
+                    mymap.removeLayer(water);
+                    water = L.circle([latagua, longagua],{radius: 800}).addTo(mymap).bindPopup("I'm a deep water deposit.");
+
                     if (state == 0) {
                         state = 1;
                         console.log("Estoy en circle");
@@ -84,24 +106,6 @@ angular.module('appFire')
                         lngDestino = e.latlng.lng;
                         state = 1;
                     }
-                    /* app.getWater(e.latlng.lat, e.latlng.lng, function (data) {
-                        var water = L.marker([data.lata, data.longa]).addTo(mymap).bindPopup("I'm a deep water deposit.");
-                        if (state == 0) {
-                            state = 1;
-                            console.log("Estoy en circle");
-                            latDestino = e.latlng.lat;
-                            lngDestino = e.latlng.lng;
-                        } else if (state == 1 ){
-                            control.setWaypoints([]);
-                            latDestino = e.latlng.lat;
-                            lngDestino = e.latlng.lng;
-                        } else {
-                            control.setWaypoints([]);
-                            latDestino = e.latlng.lat;
-                            lngDestino = e.latlng.lng;
-                            state = 1;
-                        }
-                    });*/
                 })
             }
         });

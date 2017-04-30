@@ -23,17 +23,5 @@ public class Resources {
         obj.put("fuego_agua",fuego_agua);
         return new ResponseEntity<>(obj,HttpStatus.CREATED);
     }
-/*
-    @RequestMapping(value= "/water", method = RequestMethod.GET)
-    public ResponseEntity<JSONObject> water(HttpServletRequest request){
-        FireService service = new FireService();
-        System.out.println(request.getHeader("lat"));
-        ArrayList<Cords> agua = service.extractWater(Double.parseDouble(request.getHeader("lat")), Double.parseDouble(request.getHeader("lng")));
-        JSONObject obj= new JSONObject();
-        obj.put("agua",agua);
-        System.out.println("obj" +obj);
-
-        return new ResponseEntity<>(obj,HttpStatus.CREATED);
-    }*/
 }
 

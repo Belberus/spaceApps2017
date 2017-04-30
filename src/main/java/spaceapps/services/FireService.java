@@ -58,22 +58,4 @@ public class FireService {
         }
         return resultado;
     }
-/*
-    public ArrayList<Cords> extractWater(double lat, double lng) {
-        String query = "SELECT lata,longa FROM datos_finales WHERE lat = latf AND lng = lngf ";
-        ArrayList<Cords> resultado = new ArrayList<Cords>();
-        double lata,longa;
-        try {
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                lata = rs.getDouble("lata");
-                longa = rs.getDouble("longa");
-                Cords cords = new Cords(lat,lng,0,lata,longa);
-                resultado.add(cords);
-            }
-        } catch (SQLException e) {
-        }
-        return resultado;
-    }*/
 }
