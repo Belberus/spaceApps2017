@@ -44,7 +44,9 @@ public class FireService {
                 longitude = rs.getDouble("lon");
                 dis = rs.getDouble("dis");
                 bri = rs.getDouble("bri");
-                Cords cords = new Cords(latitude,longitude,dis,bri);
+                double dis2 = ((dis-729)/43819)*5;
+                double bri2 = ((bri-269.6)/38.6)*5;
+                Cords cords = new Cords(latitude,longitude,dis2+bri2);
                 resultado.add(cords);
             }
         } catch (SQLException e) {

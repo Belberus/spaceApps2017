@@ -5,14 +5,13 @@ public class Cords {
 
         private double latitude;
         private double longitude;
-        private double dis;
-        private double bri;
+        private double intensity;
 
-        public Cords(double latitude, double longitude, double dis, double bri) {
+
+        public Cords(double latitude, double longitude, double intensity) {
             this.latitude = latitude;
             this.longitude = longitude;
-            this.bri = bri;
-            this.dis = dis;
+            this.intensity = intensity;
         }
 
         public double getLatitude() {
@@ -30,4 +29,12 @@ public class Cords {
         public void setLongitude(double longitude) {
             this.longitude = longitude;
         }
+
+        public double getIntensity() {
+        return intensity;
+    }
+
+        public void setIntensity(double intensity) {
+        this.intensity = intensity;
+    }
 }
