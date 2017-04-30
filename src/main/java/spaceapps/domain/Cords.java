@@ -1,4 +1,4 @@
-package domain;
+package spaceapps.domain;
 
 
 public class Cords {

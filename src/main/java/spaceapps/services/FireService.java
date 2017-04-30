@@ -1,6 +1,6 @@
-package services;
+package spaceapps.services;
 
-import domain.Cords;
+import spaceapps.domain.Cords;
 
 import java.sql.*;
 import java.util.ArrayList;
