@@ -32,21 +32,28 @@ public class FireService {
         }
     }
 
-    public ArrayList<Cords> extractFires() {
-        String query = "SELECT bri, lat, lon, dis FROM final";
+    public ArrayList<Cords> extractFull_Data() {
+        String query = "SELECT latf,longf,dis,lata,longa,bri,dis_reserva FROM datos_finales";
         ArrayList<Cords> resultado = new ArrayList<Cords>();
-        double latitude, longitude,bri,dis;
+        double latf,longf,dis,lata,longa,bri,dis_reserva;
         try {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                latitude = rs.getDouble("lat");
-                longitude = rs.getDouble("lon");
+                latf = rs.getDouble("latf");
+                longf = rs.getDouble("longf");
                 dis = rs.getDouble("dis");
+                lata = rs.getDouble("lata");
+                longa = rs.getDouble("longa");
                 bri = rs.getDouble("bri");
-                double dis2 = ((dis-729)/43819)*5;
-                double bri2 = ((bri-269.6)/38.6)*5;
-                Cords cords = new Cords(latitude,longitude,dis2+bri2);
+                dis_reserva = rs.getDouble("dis_reserva");
+                double dis2 = ((dis-4214.82)/45867.9)*(10/3);
+                double bri2 = ((bri-269.6)/38.6)*(10/3);
+                double dis_reserva2 = (1-((dis_reserva-729.66)/43817.66))*(10/3);
+                System.out.println(dis2);
+                System.out.println(bri2);
+                System.out.println(dis_reserva2);
+                Cords cords = new Cords(latf,longf,dis2+bri2+dis_reserva2,lata,longa);
                 resultado.add(cords);
             }
         } catch (SQLException e) {
