@@ -5,10 +5,14 @@ public class Cords {
 
         private double latitude;
         private double longitude;
+        private double dis;
+        private double bri;
 
-        public Cords(double latitude, double longitude) {
+        public Cords(double latitude, double longitude, double dis, double bri) {
             this.latitude = latitude;
             this.longitude = longitude;
+            this.bri = bri;
+            this.dis = dis;
         }
 
         public double getLatitude() {

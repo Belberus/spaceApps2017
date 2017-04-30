@@ -33,17 +33,18 @@ public class FireService {
     }
 
     public ArrayList<Cords> extractFires() {
-        String query = "SELECT latitude, longitude FROM fue";
+        String query = "SELECT bri, lat, lon, dis FROM final";
         ArrayList<Cords> resultado = new ArrayList<Cords>();
-        double latitude, longitude;
+        double latitude, longitude,bri,dis;
         try {
-            System.out.println(conn);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                latitude = rs.getDouble("latitude");
-                longitude = rs.getDouble("longitude");
-                Cords cords = new Cords(latitude,longitude);
+                latitude = rs.getDouble("lat");
+                longitude = rs.getDouble("lon");
+                dis = rs.getDouble("dis");
+                bri = rs.getDouble("bri");
+                Cords cords = new Cords(latitude,longitude,dis,bri);
                 resultado.add(cords);
             }
         } catch (SQLException e) {
