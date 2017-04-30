@@ -13,6 +13,21 @@ angular.module('appFire')
                 }).success(function (data) {
                     callbackSuccess(data);
                 });
+            },
+
+            getWater: function (lat, lng, callbackSuccess) {
+                console.log(lat + " "+ lng);
+                $http({
+                    method: 'GET',
+                    url: '/water',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'lat': lat,
+                        'lng': lng
+                    }
+                }).success(function (data) {
+                    callbackSuccess(data);
+                });
             }
         };
     });

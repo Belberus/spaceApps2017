@@ -1,23 +1,11 @@
-<div id="mapid">
-    <script>
-        var mymap = L.map('mapid').setView([40.489, -3.6827], 6);
-        console.log("Hey");
-        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(mymap);
-        console.log("Hey1");
-        // Para añadir puntos, solo poner coordeanadas
-       /* var marker = L.marker([40.489, -3.6827]).addTo(mymap);
-        L.Routing.control({
-            waypoints: [
-                L.latLng(42.312219, -0.381168),
-                L.latLng(41.6563497, -0.876566)
-            ]
-        }).addTo(mymap);*/
-    </script>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Active Fires</h1>
+        <p>Detect the active fires in Spain and trace the fastest way to reach the zone.</p>
+    </div>
+</div>
+<div style="margin-left: 25px; margin-right: 25px;" class="panel panel-default">
+    <div id="mapid">
+    </div>
+</div>
 
-</div>
-<div>
-    <button ng-click="getFires()" type="button" class="btn btn-primary center-block">Get Fires</button>
-    <button type="button" class="btn btn-primary center-block">Print Fires</button>
-</div>

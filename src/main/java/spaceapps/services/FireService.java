@@ -37,6 +37,7 @@ public class FireService {
         ArrayList<Cords> resultado = new ArrayList<Cords>();
         double latf,longf,dis,lata,longa,bri,dis_reserva;
         try {
+            System.out.println(conn);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
@@ -50,9 +51,6 @@ public class FireService {
                 double dis2 = ((dis-4214.82)/45867.9)*(10/3);
                 double bri2 = ((bri-269.6)/38.6)*(10/3);
                 double dis_reserva2 = (1-((dis_reserva-729.66)/43817.66))*(10/3);
-                System.out.println(dis2);
-                System.out.println(bri2);
-                System.out.println(dis_reserva2);
                 Cords cords = new Cords(latf,longf,dis2+bri2+dis_reserva2,lata,longa);
                 resultado.add(cords);
             }
@@ -60,4 +58,22 @@ public class FireService {
         }
         return resultado;
     }
+/*
+    public ArrayList<Cords> extractWater(double lat, double lng) {
+        String query = "SELECT lata,longa FROM datos_finales WHERE lat = latf AND lng = lngf ";
+        ArrayList<Cords> resultado = new ArrayList<Cords>();
+        double lata,longa;
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                lata = rs.getDouble("lata");
+                longa = rs.getDouble("longa");
+                Cords cords = new Cords(lat,lng,0,lata,longa);
+                resultado.add(cords);
+            }
+        } catch (SQLException e) {
+        }
+        return resultado;
+    }*/
 }
