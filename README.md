@@ -19,7 +19,7 @@ Los fuegos, serían marcados con distintos tonos de rojo en el mapa, cada tono c
   - Leaflets para la presentación de la información en un mapa
   - Spring para el back-end
   - Postgre/PostGIS como servidor de la aplicación
-  - QuantumGIS y KNIME para la visualización y limpiado de datos
+  - QuantumGIS y KNIME para la visualización y la limpieza de datos
  
 ## Datos utilizados
   - Información sobre fuegos activos o anomalías de temperatura obtenida de la NASA
